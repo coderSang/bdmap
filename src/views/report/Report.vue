@@ -12,7 +12,7 @@
       }
     },
     mounted(){
-      this.situationSummary ();
+      this.situationSummary();
     },
     methods: {
       situationSummary() {

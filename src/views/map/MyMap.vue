@@ -1,6 +1,5 @@
 <template>
   <div class="my-map">
-
     <bd-map></bd-map>
     <use-location-prompt></use-location-prompt>
   </div>

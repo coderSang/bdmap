@@ -13,20 +13,25 @@
                    :stroke-opacity="0" :fillOpacity="0" :stroke-weight="2"></bm-circle>
         <!--缩放组件-->
       </div>
-      <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
+      <div class="leftbar">
+        <left-bar @uploadRoad="uploadRoad"></left-bar>
+      </div>
+      <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
     </baidu-map>
-    <charts-show class="aaa"></charts-show>
+    <charts-show ref="chartShow"></charts-show>
   </div>
 </template>
 
 <script>
   import {BmlHeatmap} from 'vue-baidu-map'
   import ChartsShow from "./ChartsShow";
+  import LeftBar from "../../../components/content/leftbar/LeftBar";
   export default {
     name: "BdMap",
     components:{
       BmlHeatmap,
-      ChartsShow
+      ChartsShow,
+      LeftBar
     },
     data() {
       return {
@@ -45,9 +50,16 @@
         window.MyBdMap = BMap
       },
       clickEvent(e){
+        // var walking = new BMap.WalkingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+        // walking.search("湖州市第二中学", "湖州师范学院");
         this.chartsShow=true
         this.$store.commit('showCharts')
+        this.$refs.chartShow.socialDraw();
       },
+      uploadRoad(loc){
+        var walking = new BMap.WalkingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+        walking.search(loc.start, loc.end);
+      }
     },
     created() {
       this.$bus.$on("location", () => {
@@ -79,7 +91,9 @@
     width: 100%;
     height: 100%;
   }
-  .my-loc{
-    display: none;
+  .leftbar{
+    position: absolute;
+    left: 0;
+    top: 61px;
   }
 </style>
