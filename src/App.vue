@@ -1,19 +1,23 @@
 <template>
   <div id="main-content">
-    <left-bar></left-bar>
+    <top-bar></top-bar>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
 
 <script>
-  import BdMap from './components/map/BdMap'
-  import LeftBar from './views/leftbar/LeftBar'
-
+  import BdMap from './views/map/myMapChild/BdMap'
+  import test from './views/test'
+  import TopBar from "./components/content/topbar/TopBar";
   export default {
     name: "App",
     components: {
       BdMap,
-      LeftBar
+      TopBar,
+      test
     }
   };
 </script>
