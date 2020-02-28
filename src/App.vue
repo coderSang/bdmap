@@ -15,7 +15,6 @@
 <script>
   import BdMap from './views/map/myMapChild/BdMap'
   import Login from "./views/login/Login";
-  import test from './views/test'
   import TopBar from "./components/content/topbar/TopBar";
   import LeftBar from "./components/content/leftbar/LeftBar";
   export default {
@@ -25,7 +24,6 @@
       LeftBar,
       BdMap,
       TopBar,
-      test
     },
     methods:{
       bclick(){
