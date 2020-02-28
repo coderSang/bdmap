@@ -32,7 +32,8 @@ const store = new Vuex.Store({
     },
     login(state){
       state.hadLogin = true
-    }
+    },
+
   },
   actions: {
   },
